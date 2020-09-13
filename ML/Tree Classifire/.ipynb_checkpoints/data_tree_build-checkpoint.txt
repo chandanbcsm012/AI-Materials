@@ -1,0 +1,60 @@
+color,dim,label
+green,3,apple
+yellow,3,apple
+red,1,grape
+green,1,grape
+yellow,3,lemon
+yellow,2,lemon
+
+Decision Tree:
+--------------
+As the name suggest tree,it builds a tree of features by iteratively
+splitting the samples to minimize the impurity. 
+
+Impurity:
+---------
+>is a measure of how often a randomly chosen sample from the dataset would be incorrectly labeled.
+
+	approaches:
+	-----------
+	>Gini Index
+	>Entropy Impurity with Information Gain 
+
+Formula of Gini measure:
+	see image
+
+Gini Impurity of Dataset:
+-------------------------
+1-[(2/6)^2+(2/6)^2+(2/6)^2]
+1-.33
+.667
+
+Now we need to find first split node
+>iterate all cols
+	>for each unique value of a col create left and right subtrees
+		>compute gini impurity of each subtree
+		>take weighted avg impurity of left and right subtrees
+		P(lefty/totaly)*gini(left)+P(righty/ty)*gini(right)
+		>do same with all possible split of all cols
+		>lowest gini value of a column becomes threashold and col of value becomes split node. 
+
+
+Formula of Entropy measure:
+	see image
+
+Entropy Impurity of Dataset:
+-------------------------
+-[(2/6)*log2(2/6)+(2/6)*log2(2/6)+(2/6)*log2(2/6)]
+1.585
+
+
+Now we need to find first split node
+>iterate all cols
+	>for each unique value of a col create left and right subtrees
+		>compute impurity of each subtree
+		>take weighted avg impurity of left and right subtrees
+		>get information gain by taking diff bw dataset impurity-avg impurity
+
+		>highest information gain value of a column becomes threshold and col of value becomes split node. 
+
+ 

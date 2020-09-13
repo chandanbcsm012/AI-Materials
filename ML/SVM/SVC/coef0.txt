@@ -1,0 +1,1 @@
+it is because powers of values smaller than one gets closer and closer to 0, while the same power of value bigger than one grows to infinity. You can use coef0 to "scale" your data

@@ -1,0 +1,101 @@
+How to build decision tree:
+---------------------------
+	compute impurity of dataset:
+
+
+find root node:
+	how to find root node
+	compute impurity to find any node
+
+	color	dim	label
+	0	3	apple
+	2	3	lemon
+	2	3	apple
+	1	1	grape
+	0	1	grape
+	2	2	lemon
+
+	gini(dataset)=.667
+	if dim<=1.5
+		left tree(gini)=0	
+		right tree(gini)=.5
+		weighted avg=(2/6)*0+(4/6)*.5=.33
+
+
+Entropy 
+
+	entropy(dataset)=1.585
+	if dim<=1.5
+		entropy(left)=0
+		entropy(right)=1
+		weighted avg=4/6
+		information gain=E(root_dataset)-E(feature_with_threshold)
+	if dim<=2.5
+		information gain=E(root_dataset)-E(feature_with_threshold)
+	.
+	.
+	.
+	.
+	max(information gain)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	color={0,1,2}
+	dim={1,2,3}
+
+
+	pick first feature with it's first unique value,use <= condition
+	if color<=0
+		left tree(gini)=.5
+		right tree(gini)=1-[p(a)**2+p(g)**2+p(l)**2]
+				=1-[(1/4)**2+(1/4)**2+(2/4)**2]
+				=.625
+
+		weighted avg:
+
+			=(2/6)*.5+(4/6)*.625
+			=.583
+	if color<=1
+		left tree(gini)=
+		right tree(gini)=
+		weighted avg=
+	
+	if color<=2
+		left tree(gini)=
+		right tree(gini)=
+		weighted avg=
+
+	if dim<=1
+		left tree(gini)=
+		right tree(gini)=
+		weighted avg=
+	if dim<=2
+		left tree(gini)=
+		right tree(gini)=
+		weighted avg=
+
+	if dim<=3
+		left tree(gini)=
+		right tree(gini)=
+		weighted avg=
+
+
+	min(weighted avg) becomes root node and condition becomes threshold value
+	
+
+
+
+
+

@@ -1,0 +1,37 @@
+Underfitting:
+	>high bias i.e. poor score on seen data
+
+why underfitting:
+	>features are not scaled
+	>less no. of features
+	etc.
+solution of underfitting:
+	>PolynomialFeatures
+
+Overfitting:
+	>high variance i.e. model is only sensitive to seen data
+	or poor with unseen data.
+
+why overfitting:
+	>features are not scaled
+	>too many features	
+
+solution:
+	>Regularization
+		>Ridge
+		>Lasso
+		etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+How LinearRegression works internally:
+--------------------------------------
+>It uses equation of line to find relationship between independent and
+dependent variable
+	y=mx+b  
+
+>LR needs to find or learn the value of parameters(m and b) using training data.
+	lr.fit(X_train,y_train)
+
+>let's suppose
+	m=5000
+	b=3000
+
+now equation becomes:
+	y=5000x+3000  #this is known as model
+
+
+Difference between Algorithm and Model:
+----------------------------------------
+>Algorithm uses standard mathmatical equation to solve a problem
+in this equation ,there might be some parameters that need to be learned
+	exp:
+
+	y= mx+ b  is a mathematical equation with parameters m,b
+
+algorithm needs to learn these paramters from training data
+
+	now if algorith has find values of m and b
+
+	m=5000
+	b=3000
+
+now equ becomes:
+	y=5000x+3000
+
+	now this is known as model
+
+
+
+
+
+
+
+
+
+	

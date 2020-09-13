@@ -1,0 +1,89 @@
+Logistic Regression with multiclass classification:
+---------------------------------------------------
+step-1:
+	lr=LogisticRegression(solver='lbfgs',multi_class='multinomial')
+
+step-2:
+	pass training data
+	lr.fit(X,y)
+
+How fit() method works internally:
+----------------------------------
+>identify no of unique classes----->3 in iris set
+>group samples of each classes
+>bulid linear model for each class
+	(model1,model2,model3)
+	(classifier1,classifier2,classifier3)
+
+How predict() method works internally:
+----------------------------------------	
+step-3:
+	>compute linear value for a sample for each class
+	z0,z1,z2
+step-4:
+	>find prob of each class using z-values
+	>softmax function is used to these probs
+
+step-5:
+	>find class of max prob
+	>it is the final prediction
+
+cross validation:
+------------------
+>it is technique to perform k-fold validation on the dataset
+>for each fold a seperate model is created and testing score is evaluated
+>returns testing scores for all fold
+
+
+advantages:
+-----------
+	>model selection
+	>hyperparameter tuning
+		>GridSearchCV
+		>RandomSearchCV
+	>feature selection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

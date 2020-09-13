@@ -1,0 +1,29 @@
+Ensemble(group) Learning:
+	>it is a technique that combines multiple weak learners(models) into one
+	 strong learner to predict the final output.
+
+	>there are two types of ensemble learning
+		>Bagging
+		>Boosting
+
+Bagging:
+--------
+	>training set is divided into multiple subsets using random splitting with replacement approach.
+	>for each subset a seperate model is created either using same
+algo or different algo.
+	>test sample is passed to each model for prediction
+	>voting is used in classification and avg is used in regression.
+	
+	>sklearn supports following algos :
+		same base estimator
+			>RandomForestClassifier
+			>RandomForestRegressor
+			>BaggingClassifier
+			>BaggingRegressor
+		different estimators
+			>VotingClassifier
+			>VotingRegressor
+			etc.
+
+
+	

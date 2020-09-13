@@ -1,0 +1,44 @@
+CountVectorizer:
+	>Object of this class can be used to extract features and fetures matrix
+
+	cv=CountVectorizer()
+		>this object generates features matrix based on frequency count of a word
+ 	cv=CountVectorizer(binary=True)
+		>this object generates features matrix based on  binary value(absent/present) of a word
+ 	cv=CountVectorizer(stop_words='english')
+		>this object generates features matrix based on frequency of a word
+		after removing stop words and some specific punc.
+	cv=CountVectorizer(stop_words=list_of_stop_words)
+		>to customize stopwords
+
+TfidfVectorizer:
+	>Object of this class can also  be used to extract features and fetures matrix
+	
+	
+	
+	Algo1------>works better with binary values------>
+		cv=CountVectorizer(binary=True)
+
+	Algo2------>works better with discrete values------>
+		cv=CountVectorizer()
+
+	Algo3------>works better with real(continuous/normalized) values------>
+		tv=TfidfVectorizer()
+
+
+Term frequency-Inverse Document Frequency
+
+Term------->it is an individual word.
+document--->it is a sample obtained after text cleaning
+
+
+
+Specialized algos for text classification:
+------------------------------------------
+	Naive bayes classifiers:
+		>Gaussian Naive Bayes----->discrete values in feature matrix
+		>Bernoulli Naive Bayes---->binary values in feature matrix
+		>Multinomial Naive Bayes-->real(continuous/normalized) values
+		etc.
+
+

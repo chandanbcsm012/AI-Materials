@@ -1,0 +1,35 @@
+PCA(Principal Component Analysis):
+----------------------------------
+	>it is a dim. reduction technique that trasformed original dataset to new dataset
+in such a manner ,first dim. contains most of the information of dataset,and so on.
+
+	>here,newly generated features are known as Principal Components
+	>you can think principal component as mixture of original features
+	>bydefault it generates same number of principal components as the no. of features
+in original dataset.
+	>we may use first 2-3 (or based on most of the information) pc to build thge model.
+
+Note:there are other techniques also for Dimensionlity Reduction like LDA,SVD,etc.
+
+
+	>from sklearn.decomposition import PCA
+
+How PCA works internally:
+-------------------------
+step-1
+	>use standard scalar to scale original features
+step-2
+	>compute covariance matrix of features
+
+step-3
+	>compute eigenvalues and eigenvectors from cov-matrix
+
+step-4
+	>take transpose of eigen vectors
+step-5
+	>select first n eigenvectors based on their eigen values
+step-6
+	>again take transpose of selected eigen vectors
+step-7
+	>take dot product with scaled features(original)
+	

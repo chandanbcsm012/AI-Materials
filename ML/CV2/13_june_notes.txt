@@ -1,0 +1,211 @@
+K-Means:
+--------
+	>it is one of the unsupervise algo that groups similar samples into clusters
+
+Working of k-means:
+-------------------
+>decide no of clusters(say k)
+Run-1
+	>pick k points of training set as centroid of clusters
+
+	Iteration-1
+		>calculate distances of all training points with these centroid
+		>assign training points to a specific cluster based on distances
+		>again compute new centroids by taking means of samples that lie in same 			cluster
+	Iteration-2
+		>calculate distances of all training points with these centroid
+		>assign training points to a specific cluster based on distances
+		>again compute new centroids by taking means of samples that lie in same 			cluster
+	.
+	.
+	.
+	until max_iteration or unchanged centroid in two consecutive iterations
+
+Run-2
+	>pick different k points of training set as centroid of clusters
+
+	Iteration-1
+		>calculate distances of all training points with these centroid
+		>assign training points to a specific cluster based on distances
+		>again compute new centroids by taking means of samples that lie in same 			cluster
+	Iteration-2
+		>calculate distances of all training points with these centroid
+		>assign training points to a specific cluster based on distances
+		>again compute new centroids by taking means of samples that lie in same 			cluster
+	.
+	.
+	.
+	until max_iteration or unchanged centroid in two consecutive iterations
+
+
+
+.
+.
+.
+.
+Run -n
+
+How to find best value for no. of clusters
+------------------------------------------
+>there are multiple techniques for this concept and elbow technique is one of them
+
+
+Computer Vision:
+----------------
+	>it is technique to process the images/videos before given to model.
+	>opencv and dlib are commonly used libraries for computer vision
+OpenCv:
+-------
+	>first released in 2000 by Gary Bradsky.
+	>supports c++,java,python
+	>pip install opencv-python
+	>cv2 is module name
+
+cv2.IMREAD_COLOR	1 (default)Transparency is neglected
+cv2.IMREAD_GRAYSCALE	0
+cv2.IMREAD_UNCHANGED	-1
+
+
+
+How to display image:
+---------------------
+
+cv2.imshow('window_name',image)#auto size and not responsive with window
+
+cv2.namedWindow('window_name',cv2.WINDOW_NORMAL) #make image responsive
+cv2.imshow('window_name',image)
+
+Note:in both cases window will be displayed and closed very fast.
+
+cv2.waitKey(time_in_milis):it is a keyboard binding function and holds window till given time.
+
+cv2.waitKey(0):means wait indefinitely untill any key is pressed
+
+
+How to close window:
+--------------------
+Note:close button of window make window invisible not destroy it
+
+cv2.destroyWindow('window_name') :close specified window
+
+cv2.destroyAllWindows():close all windows
+
+
+
+How to resize image:
+--------------------
+
+resize_img=resize(img,(w,h))
+
+
+How to draw text and shapes in image:
+-------------------------------------
+cv2.line(img,(x1,y1),(x2,y2),(B,G,R),thickness)
+default value of thickness is 1,-1 means fill shape
+
+cv2.rectangle(img,(top_left_x,top_left_y),(bottom_right_x,bottom_right_y),(B,G,R),thick)
+
+cv2.circle(img,center(x,y),radius,thick)
+
+cv2.putText(img,'text',bottom_left(x,y),font_type,font_size,color,thick,line_type)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EDA(Exploratory Data Analysis):
+===============================
+	>It is a statistical way to perform primary investigation on data before going
+	detailed study.
+	>It provides various statistical characterstics of data like:
+		>mean
+		>median
+		>mode
+		>max
+		>min
+		>std
+		>count
+		etc.
+	>We may also visualize EDA using matplotlib & seaborn libraries
+	>In pandas,we have following methods to perform EDA
+		>info()
+		>describe()
+		>groupby()
+		>etc.
+
+
+Data Preprocessing:
+------------------
+	>handling missing values
+	>handling duplicacy
+	>data cleaning
+	>data encoding
+		>converting categorical col to numeric
+			>label encoding   (ordinal to numeric)
+			>one hot encoding (nominal to numeric)
+
+
+
+
+
+
+
+

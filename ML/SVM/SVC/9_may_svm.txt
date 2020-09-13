@@ -1,0 +1,91 @@
+Support Vectors Machine(SVM):
+-----------------------------
+	>this algo works with both classification and regression
+	>SVC is for classification and SVR is for Regression
+
+	from sklearn.svm import SVC
+	from sklearn.svm import SVR
+
+SVM for classification:
+-----------------------
+	there are two types of SVC
+		>LinearSeperable SVM
+		>Non-LinearSeperable SVM
+			>poly
+			>rbf
+			>sigmoid
+			>etc.
+
+
+
+Linear Seperable SVC:
+	>binary classification
+	>multiclass classification
+	
+
+Binary Classification:
+----------------------
+	>it assumes two classes
+		>-ve
+		>+ve
+	(according to natural order)
+		
+step_1:(fit)
+	>compute coef and intercept from training data
+	>first it finds hyperplane(decision boundary) to classify
+training points(select max margin hyperplane)
+	
+	
+step_2:(predict)
+	>for test data,compute distance from hyperplane
+	>if(distance<0):
+		-ve class
+	else:
+		+pos class
+
+What are support vectors:
+-------------------------
+	>are traing points of each class that lie on negative and
+pos hyperplane
+
+Probability in SVC:
+-------------------
+	>you may also use probability to predict a class with more
+confidence.
+
+	svc=SVC(probability=True)
+
+
+Multiclass classification:
+--------------------------
+	>two approaches
+		>ovr(one versus rest/one versus all)
+		>ovo(one versus one)
+
+
+one versus rest approach:
+-------------------------
+	>for each class a seperate model is created
+	>it means a seperate hyprerplane for each class
+	>for test sample,we compute distances for each hyperplane
+	>max(d1,d2,d3) class is final class.
+	>we may also use probability for each class
+
+one versus one approach:
+------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+	 	
+
+
+

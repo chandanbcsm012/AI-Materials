@@ -1,0 +1,57 @@
+NLP(Natural Language Processing):
+=================================
+>it is a technique that enables human interaction with machines in natural(human) 
+languages.
+
+Applications of NLP
+	>text classification(ML)
+	Deep Learning(neural network)
+	>chat bot
+	>speech recognition
+	>NMT(natural/neural machine translation)
+	etc.
+
+Implementation of NLP:
+----------------------
+there are multiple libraries that can be used to implement NLP
+>nltk(natural language toolkit)
+>Gensim
+>TextBlob
+>spaCy
+etc.
+
+
+Steps in Text classification:
+-----------------------------
+	>Text cleaning
+	>Feature Extraction
+	>model building
+	>make prediction
+
+Text cleaning:
+--------------
+	>remove punctuation
+	>convert all text in same case(lower/upper)
+	>remove stop words
+	>stemming / lemmetization
+
+	wife,wives------->stem------->wife,wive
+	wife,wives------->lem------->wife,wife
+
+Feature Extraction:
+-------------------
+	>it is a process of extracting features from whole text
+	>there are multiple approaches to extract features
+		>Bag of words technique
+		>Tf-Idf technique
+		>one hot vector technique
+		>word embedings
+
+Model building:
+----------------
+	>create model by fitting feature matrix and target
+	>naive bayes algos is recommended for text classification because of fast computation	
+prediction:
+	>use test sample to classify it.
+
+
