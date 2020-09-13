@@ -1,0 +1,9 @@
+1.upload dataset folder to google drive under MyDrive option
+2.write following code in colab
+	
+	from google.colab import drive
+	drive.mount('/content/drive')
+3.you will get a link ,click on link to get authorization code
+4.enter this code
+5.read dataset using following path
+df=pd.read_csv('/content/drive/My Drive/dataset/online_ads.csv')

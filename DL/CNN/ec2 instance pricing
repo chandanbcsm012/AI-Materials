@@ -1,0 +1,8 @@
+
+	      vCPU	  ECU	       Memory (GiB)	Instance Storage (GB)	Linux/UNIX Usage
+t2.nano	1	Variable	0.5 GiB		EBS Only	$0.0062 per Hour
+t2.micro	1	Variable	1 GiB			EBS Only	$0.0124 per Hour
+t2.small	1	Variable	2 GiB			EBS Only	$0.0248 per Hour ---> Abhi ye chal raha hai
+t2.medium	2	Variable	4 GiB			EBS Only	$0.0496 per Hour
+t2.large	2	Variable	8 GiB			EBS Only	$0.0992 per Hour
+t2.xlarge	4	Variable	16 GiB			EBS Only	$0.1984 per Hour

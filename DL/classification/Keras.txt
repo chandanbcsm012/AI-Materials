@@ -1,0 +1,60 @@
+﻿Keras:
+======
+>Keras is an open-source deep learning library written in Python.
+
+>It is capable of running on top of TensorFlow, Microsoft Cognitive Toolkit, Theano, or PlaidML.
+
+>In 2019, Google released a new version of their TensorFlow deep learning library (TensorFlow 2) that integrated the Keras API
+
+>This integration is commonly referred to as the tf.keras interface or API (“tf” is short for “TensorFlow“)
+
+Now the term Keras means:
+	>Standalone Keras: The standalone open source project that supports 			   TensorFlow, Theano and CNTK backends.
+
+	>tf.keras: The Keras API integrated into TensorFlow 2.
+
+
+Deep Learning Model Life-Cycle using Keras:
+-------------------------------------------
+1.Define the model.
+2.Compile the model.
+3.Fit the model.
+4.Evaluate the model.
+5.Make predictions.
+
+
+1.Define the model.
+	>select API type of model (Sequential or Functional)
+	>adding layers
+	>defining activation function,initializing weights,input shape
+
+2.Compile the model.
+	>select optimizer
+	>select loss function to optimize
+	>select metrics for score
+
+3.Fit the model.
+	>specify training set
+	>specify epochs
+	>optional batch_size
+
+4.Evaluate the model.
+	>test the model with testset
+
+5.Make predictions.
+	>finally make prediction on real time data
+
+
+Sequential Model API:
+---------------------
+>It is the simplest way to define deep neural network
+
+>It is referred to as “sequential” because it involves defining a Sequential class and adding layers to the model one by one in a linear manner, from input to output.
+
+Functional Model API:
+---------------------
+In Sequential API ,layers automatically get input as output from previous layers,it means we can not use output of a layer in other models because we dont have reference of this input /output
+
+Functional API address this problem.
+
+

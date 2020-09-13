@@ -1,0 +1,38 @@
+How to build Neural Network using Framework:
+--------------------------------------------
+	>using sklearn(supports only cpu)
+	>using tensorflow(supports cpu/gpu/tpu)
+
+Using sklearn:
+--------------
+	from sklearn.neural_network import MLPClassifier 
+	from sklearn.neural_network import MLPRegressor
+
+
+	mlpcf=MLPClassifier()
+	
+	Activation:
+		>identity (Linear/Do nothing)
+		>logistic (sigmoid)
+		>tanh
+		>relu
+		>softmax
+
+In MLPClassifier(),
+	>identity 
+	>logistic 
+	>tanh
+	>relu
+
+	are applicable to hidden layers
+
+and 
+	logistic,softmax are applicable to outputlayer implictly
+
+
+
+
+In MLPRegressor(),
+	
+	>activation is applied to hidden layers only
+	>at output layer,there is no need of activation

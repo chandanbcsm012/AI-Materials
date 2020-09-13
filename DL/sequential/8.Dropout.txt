@@ -1,0 +1,25 @@
+﻿>Dropout is a regularization technique for neural network to Prevent Neural Networks 
+from Overfitting.
+
+>Dropout is a technique where randomly selected neurons are ignored during training. They are “dropped-out” randomly. This means that their contribution to the activation of downstream neurons is temporally removed on the forward pass and any weight updates are not applied to the neuron on the backward pass.
+
+>for each forward pass,neurons are dropped out randomly
+
+>The effect is that the network becomes less sensitive to the specific weights of neurons. This in turn results in a network that is capable of better generalization and is less likely to overfit the training data.
+
+>Dropout is only used during the training of a model and is not used when evaluating the skill of the model.
+
+At Input Layer:
+---------------
+model = Sequential()
+model.add(Dropout(0.2, input_shape=(60,)))
+
+
+At Hidden Layer:
+----------------
+	model = Sequential()
+	model.add(Dense(60, input_dim=60, activation='relu'))
+	model.add(Dropout(0.2))
+	model.add(Dense(30, activation='relu'))
+	model.add(Dropout(0.2))
+	model.add(Dense(1, activation='sigmoid'))

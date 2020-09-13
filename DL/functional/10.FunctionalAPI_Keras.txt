@@ -1,0 +1,76 @@
+The sequential API allows you to create models layer-by-layer for most problems. It is limited in that it does not allow you to create models that share layers or have multiple inputs or outputs.
+
+Functional API address these problems.
+
+1. Defining Input:
+-----------------
+Unlike the Sequential model, you must create and define a standalone Input layer that specifies the shape of input data.
+
+The input layer takes a shape argument that is a tuple that indicates the dimensionality of the input data.
+
+	in_layer = Input(shape=(features,))
+
+2. Connecting Layers:
+---------------------
+The layers in the model are connected pairwise.
+
+	hidden = Dense(2)(in_layer)
+	out_layer=Dense(1)(hidden)
+
+3. Creating the Model:
+----------------------
+After creating all of your model layers and connecting them together, you must define the model.
+
+Keras provides a Model class that you can use to create a model from your created layers. It requires that you only specify the input and output layers.
+
+	model = Model(inputs=in_layer, outputs=out_layers)
+
+
+4. compile the model
+
+5. fit the model
+
+Shared Layers:
+--------------
+	in=Input(...)
+	h1=Dense(...)(in)
+	h2=Dense(...)(h1)
+	out=Dense(...)(h2)
+
+	model1=Model(inputs=in,outputs=out)
+
+	h22=Dense(...)(h1)
+	out22=Dense(...)(h22)
+
+	model2=Model(inputs=in,outputs=out22)
+
+Multiple Input/Output Models:
+---------------------------------
+from keras.layers.merge import concatenate
+df=pd.read_csv('/content/drive/My Drive/dataset_dl/classification/Insurance.csv')
+X1=df.iloc[:14,:-1].values
+y1=df.iloc[:14,-1].values.astype('float')
+
+dff=pd.read_csv('/content/drive/My Drive/dataset_dl/classification/fruits.csv')
+dff.FruitName=dff.FruitName.map({'Apple':0,'Banana':1})
+
+X2=dff.iloc[:14,:-1].values
+y2=dff.iloc[:14,-1].values.astype('float')
+
+dfff=pd.read_csv('sample_data/mnist_train_small.csv',header=None)
+X3=dfff.iloc[:14,1:].values
+y3=dfff.iloc[:14,0].values.astype('float')
+
+in1=Input(shape=(X1.shape[1],))
+in2=Input(shape=(X2.shape[1],))
+in3=Input(shape=(X3.shape[1],))
+merge=concatenate(inputs=[in1,in2,in3])
+h1=Dense(10,activation='relu')(merge)
+out1=Dense(1,activation='sigmoid',name="o1")(h1)
+out2=Dense(1,activation='sigmoid',name="o2")(h1)
+out3=Dense(10,activation='softmax',name="o3")(h1)
+
+
+model=Model(inputs=[in1,in2,in3],outputs=[out1,out2,out3])
+model.compile(loss={"o1":'binary_crossentropy',"o2":'binary_crossentropy',"o3":'sparse_categorical_crossentropy'},optimizer='adam',metrics=['accuracy'])
+model.fit([X1,X2,X3],[y1,y2,y3],epochs=5,batch_size=10)

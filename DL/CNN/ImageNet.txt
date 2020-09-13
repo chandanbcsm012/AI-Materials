@@ -1,0 +1,31 @@
+>ImageNet is a large dataset of annotated photographs intended for computer vision research
+
+>It contains 10 millions(1 crore) images with 10000 categories
+
+>The images vary in dimensions and resolution. Many applications resize / crop all of the images to 256x256 pixels or 224x224.
+
+>The largest image is 4288 x 2848 pixels. The smallest image is 75 x 56 pixels.
+
+>All Images are colored.
+
+>ImageNet Large Scale Visual Recognition Challenge (ILSVRC):is an annual competition held between 2010 and 2017 on a subset of Imagenet dataset(1.2 million images with 1000 categories)
+
+>The training data, the subset of ImageNet containing the 1000 categories and 1.2 million images.
+
+> 50,000 of the images with 1000 categories as validation data
+
+> 150,000 of the images with 1000 categories as test data
+
+
+
+>There are some authors who developed their CNNs for subset of Imagenet
+	>AlexNet
+	>VGG
+	>GoogleNet
+	>ResNet
+	>DenseNet
+	etc.
+
+
+
+

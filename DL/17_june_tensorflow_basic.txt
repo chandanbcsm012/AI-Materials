@@ -1,0 +1,67 @@
+Tensorflow
+
+	Tensor----->multi-dim array
+		>0-dim--------->scalar(-5,0,6,10,....)
+		>1-dim--------->vector([10,20,30])
+		>2-dim--------->matrix([[1,2],[3,4]])
+		
+
+	flow------>graph(group) of operations
+
+
+
+There are multiple types of tensor
+	>constant tensor
+	>variable tensor
+	etc.
+
+	
+if t is a tensor,diff bw t+5 and t.assign_add(5)?
+>t+5 will create a new tensor where as t.assign_add(5) will modify existing tensor
+
+t=t+5
+
+
+Q:
+	diff bw t=t+5 and t.assign_add(5)?
+	
+
+
+if t is a constant tensor,which operaton is correct?
+	>t=t+5
+	>t.assign_add(5)
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

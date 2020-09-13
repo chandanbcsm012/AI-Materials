@@ -1,0 +1,57 @@
+How to Save and Load Your Keras Deep Learning Model:
+====================================================
+1st way:
+--------
+	>save model architecture & weights into a single file(.h5)
+	>“HDF” stands for “Hierarchical Data Format”. 
+
+	Save:
+		model.save("model.h5") #filepath
+
+	Load:
+		import tensorflow as tf
+		mm=tf.keras.models.load_model("model.h5")
+		Now,you can directly evaluate or predict 
+		
+		np.argmax(mm.predict(img),axis=-1)
+	
+2nd way:
+--------
+	>save model architecture(network) & weights into two seperates files
+	
+	save network:
+		# serialize model to JSON
+		model_json = model.to_json()
+		with open("model.json", "w") as json_file:
+    			json_file.write(model_json)
+
+		or
+		# serialize model to YAML
+		model_yaml = model.to_yaml()
+		with open("model.yaml", "w") as yaml_file:
+    			yaml_file.write(model_yaml)
+
+	save weights:
+		model.save_weights("model.h5")
+
+	load network:
+		# load json and create model
+		json_file = open('model.json', 'r')
+		loaded_model_json = json_file.read()
+		json_file.close()
+		loaded_model = tf.keras.models.model_from_json(loaded_model_json)
+
+		or
+		# load yaml and create model
+		yaml_file = open('model.yaml', 'r')
+		loaded_model_yaml = yaml_file.read()
+		yaml_file.close()
+		loaded_model = tf.keras.models.model_from_yaml(loaded_model_yaml)
+
+
+	load weights:
+		loaded_model.load_weights("model.h5")
+	
+
+
+		

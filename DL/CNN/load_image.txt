@@ -1,0 +1,25 @@
+So far we have been using opencv to read image,keras also provides functions to read images.
+
+load_img():
+-----------
+
+from tensorflow.keras.preprocessing.image import load_img
+img=load_img("filepath",color_mode='rgb|grayscale',target_size=(200,200))
+
+default color_mode=rgb
+target_size=same as original (h,w)
+
+it returns PIL Image
+
+
+img_to_array():
+---------------
+
+from tensorflow.keras.preprocessing.image import img_to_array
+numpy_3d_array=img_to_array(PIL Image)
+
+here ,
+	numpy_3d_array=(h,w,ch)
+
+
+

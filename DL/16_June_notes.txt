@@ -1,0 +1,23 @@
+Tensorflow:
+-----------
+	>it is an open source library introduced in 2015.
+	>we may use tensorflow
+		>to perform mathematical operations faster than numpy
+		>to build machine learning models using neural networks
+	>Current version of tensorflow is 2.2(june 2020) which is not compatiable with
+1.x version
+
+How to install tensorflow (cpu version)
+---------------------------------------
+>Python 3.7 (64 bit)
+>c++ redisributed 2017
+>upgrade pip version(min 19.0)
+>pip insatll tensorflow (460 mb)
+
+Google Colaboratory:
+--------------------
+>it is am open source cloud platform to develop machine leaning models
+>it provides free access of GPU/TPU 
+>it's working environment is jupyter
+>it has support of tensorflow2 and other librraies
+

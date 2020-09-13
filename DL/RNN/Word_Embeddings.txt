@@ -1,0 +1,294 @@
+Problems with One Hot Representation:
+------------------------------------
+>each word is represented by sparse vector(mostly values are 0 and 1 at one place)
+>vectors of two words are orthogonal i.e. it can not capture similarity between two words.
+(orthogonal: means statistically independent and dot product results 0)
+
+
+Word Embedding:
+--------------
+	>It is a technique to represent words using a dense vector representation which are trained unlike the one-hot encoding which are hardcoded. 
+
+	>Word embeddings collect more information into fewer dimensions,i.e. it is also
+a dimensionality reduction technique for NLP. 
+
+	>The position(dense vector) of a word in the learned vector space is referred to as its embedding. 
+
+	>Vector space means dim/features after applying reduction
+
+
+Internal Working of Word Embeddings:
+------------------------------------
+	>first it will check number of output dims and generates these dims/features
+	>for a word it predict the probs belonging to all features according to context/neighbors words(how many neighbors words will be used depends on window_size arg)
+	>for this it uses language models:
+		
+		>word2vec embeddings(by google):it is based on a neural network
+		
+			>CBOW(continuous bag of words) approach
+				P(word|context) # output dims
+			>skip gram approach
+				Avg(log(P(context|word))) #output dims
+		
+		>GloVe embeddings(by stanford NLP):it is based on co-occurence matrix
+		 
+
+Implementation of Word Embedding:
+---------------------------------	
+	>Pretrained google word2vec
+	>Pretrained Stanford GloVe
+	>Trained your own embedding using gensim library 
+	>Trained your own embeddings using keras embedding layer
+
+
+Pre-Trained Model:
+------------------
+A pre-trained model is nothing more than a file containing tokens and their associated word vectors. Two commonly used models are:
+	>Goggle word2vec
+	>Stanford GloVe
+
+Google’s Word2Vec Embedding:
+----------------------------
+>The pre-trained Word2vec was created and published in 2013 by a team of researchers led by Tomas Mikolov at Google on Google news data.
+
+>It's about 100 billion words and was fit using 300-dimensional word vectors with vocabulary of 3 million words and phrases.
+
+>A phrase is a group (or pairing) of words in English. A phrase can be short or long, but it does not include the subject-verb exp:(As soon as,so that,In spite of,A lot of,etc..).
+
+>It uses a  3 layer (Input,Hidden,Output) neural network to train embeddings
+
+>It is a 1.53 Gigabytes file. You can download it from here:
+
+	https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz
+
+>you can also download it to colab by using following command:
+
+!wget https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz -P destdir_path
+
+>you can load this model using gensim library
+
+	from gensim.models import KeyedVectors
+	filename = 'GoogleNews-vectors-negative300.bin.gz'
+	model = KeyedVectors.load_word2vec_format(filename, binary=True)
+
+>it uses cosine similarity to find similarity 
+	print(model.most_similar('car',topn=5))
+	print(model.most_similar('mobile',topn=5))
+	print(model.most_similar('awesome',topn=5))
+	print(model.similarity("king","queen"))
+	print(model.most_similar(positive=['king','woman'],negative=['man'],topn=1))
+	print(model.most_similar(positive=['father'],negative=['male'],topn=1))
+
+	
+
+Stanford NLP's GloVe:(global vectors for word representation)
+-------------------------------------------------------------
+>The pre-trained GloVe was created and published in 2014 by a team(Jeffrey Pennington,Richard Socher,Christopher D.Manning) of Computer Science Department,Stanford University.
+
+>GloVe is trained on multiple datasets:
+	
+	>Wikipedia 2014 + Gigaword 5: 
+	   6B tokens,400K vocab,50d, 100d, 200d, & 300d vectors,822 MB Size(glove.6B.zip)
+
+	>Twitter: 
+           2B tweets,27B tokens,1.2M vocab,25d,50d,100d,&200d vectors,1.42 Size(glove.twitter.27B.zip)
+
+	>Common Crawl: 
+	  42B tokens,1.9M vocab,300d vectors, 1.75 GB Size (glove.42B.300d.zip)
+
+	>Common Crawl:
+	  840B tokens,2.2M vocab,300d vectors, 2.03 GB Size(glove.840B.300d.zip)
+
+>It uses co-occurence matrix to train the embeddings
+
+>you can download it in colab using following command:
+	
+	!wget http://nlp.stanford.edu/data/glove.6B.zip -P dest_dir
+
+>unzip it using following command:
+
+	!unzip "drive/My Drive/glove.6B.zip" -d "drive/My Drive"
+
+>convert extracted glove txt file to word2vec format
+	
+	from gensim.scripts.glove2word2vec import glove2word2vec
+	glove_input_file = 'drive/My Drive/glove.6B.300d.txt'
+	word2vec_output_file = 'drive/My Drive/glove.6B.300d.txt.word2vec'
+	glove2word2vec(glove_input_file, word2vec_output_file)
+
+
+>load the model
+
+	from gensim.models import KeyedVectors
+	filename = 'drive/My Drive/glove.6B.300d.txt.word2vec
+	model = KeyedVectors.load_word2vec_format(filename, binary=False)
+
+
+>it uses cosine similarity to find similarity 
+	print(model.most_similar('car',topn=5))
+	print(model.most_similar('mobile',topn=5))
+	print(model.most_similar('awesome',topn=5))
+	print(model.similarity("king","queen"))
+	print(model.most_similar(positive=['king','woman'],negative=['man'],topn=1))
+	print(model.most_similar(positive=['father'],negative=['male'],topn=1))
+
+>store embeddings into dict using tokens as keys and their vectors as values
+
+	embeddings_index = {}
+	f = open('glove.6B.100d.txt', encoding='utf-8')
+	for line in f:
+    		values = line.split()
+    		word = values[0]
+    		coefs = np.asarray(values[1:], dtype='float32')
+    		embeddings_index[word] = coefs
+	f.close()
+	print('Found %s word vectors.' % len(embeddings_index))  
+
+
+
+Trained Embeddings using gensim library
+---------------------------------------
+
+step-1
+	create tokenized corpus(list of list of tokens)
+
+	corpus=[
+        ['daal' ,'is','very','good'],
+        ['paneer' ,'is','very','awesome'],
+        ['naan' ,'is','very','amazing'],
+        ['python','is','very','good'],     
+      ]
+	
+step-2
+	from gensim.models import Word2Vec
+	model=Word2Vec(sentences=corpus,min_count=1,size=5,window=5,sg=0,iter=10)	
+
+	sentences : list of list of tokens
+
+	size: (default 100) The number of dimensions of the embedding, e.g. the length of 			    the dense vector to represent each token (word).
+
+	window: (default 5) The maximum distance between a target word and words around 			            the target word.
+
+	min_count: (default 5) The minimum count of words to consider when training the 			       model; words with an occurrence less than this count will                                be ignored.
+
+	sg: (default 0 or CBOW) The training algorithm, either CBOW (0) or skip gram (1).
+
+	iter: no of epochs used to train embeddings
+
+step-3
+	>get embeddings of words according to their position
+	emb=model.wv.vectors------>it returns embedding matrix with shape(vocab_size,emd_dim)
+
+step-4
+	>get other information from model
+
+	model.wv.index2word--->it returns list of words present in vocabulary
+	model.wv.word_vec('word')->returns word embedding or vector of given word
+	model.wv.similarity('w1','w2')->returns cosine sim of w1,w2
+	model.wv.most_similar('w',topn=5)->returns top5 similar words according to cosine 
+	
+	(wv--->represent keyedVectors)
+	print(model.wv.similarity("daal","paneer"))
+	print(model.wv.similarity("paneer","naan"))
+	print(model.wv.similarity("naan","python"))
+	print(model.wv.most_similar("daal",topn=3))
+
+with dataframe:
+---------------
+	
+	import pandas as pd
+	from keras.preprocessing.text import Tokenizer
+	df=pd.read_csv('drive/My Drive/dataset_dl/sentiment/Restaurant_Reviews.txt',sep='\t')
+
+	def prepare_text(document):
+  		tk=Tokenizer()
+  		tk.fit_on_texts([document])
+  	return list(tk.word_index.keys())
+
+	corpus=list(map(prepare_text,df.Review))
+
+	model=Word2Vec(corpus,min_count=1,size=10,sg=0,iter=5)
+	print(model.wv.similarity('great','good'))
+	print(model.wv.similarity('awesome','good'))
+	print(model.wv.similarity('tasty','good'))
+	print(model.wv.similarity('tasty','disgusted'))
+
+
+step-5
+	>save /load model for future usage
+		#By default, the model is saved in a binary format to save space
+		model.wv.save_word2vec_format("mymodel.bin")
+
+		#you can save the learned model in ASCII format and review the contents.
+		model.wv.save_word2vec_format("mymodel.txt",binary=False)
+
+		from gensim.models import KeyedVectors
+		model=KeyedVectors.load_word2vec_format("mymodel.bin")
+		print(model.word_vec('good'))	
+		
+step-6
+
+	add zero vector to represent embeddings of 0 position
+	final_emb=np.vstack([np.zeros([1,3]),emb]) 	
+
+step-7
+
+	#Now we need to obtain embedding for corpus
+
+	emd_layer=Embeddin(input_dim=vocab_size       +1,output_dim=3+1,output_dim=3,input_length=pad_seq_length,trainable=False,weights=[final_emb])
+	corpus_emb=emd_layer(pad_seq)
+	print(corpus_emb)
+
+
+>Trained your own embedding using Embedding Layer:
+
+	>embedding layer can be used to train the embeddings as well as to generate corpus embeddings. 
+
+Using Keras Embedding Layer for training embeddings:
+---------------------------------------------------
+step-1
+	represent corpus as list/series/numpy array of documents
+		
+	corpus=[
+		['food is very good'],
+		['awesome food and nice quality'],
+		['food is not good'],
+		['poor quality no toppings']
+	       ]
+
+step-2
+
+	create vocabulary and assign position for each word
+
+step-3
+
+	add padding to make sequence of fixed length
+
+	tk=Tokenizer()
+	tk.fit_on_texts(corpus)
+
+	intger_seq=tk.texts_to_sequences(corpus)
+	pad_seq=pad_sequences(intger_seq,padding='pre')
+
+step-4
+
+	create Embedding layer
+	
+	embd_layer=Embedding(input_dim,output_dim,input_length)
+
+	input_dim:vocab size+1
+	output_dim:embedding vector space
+	input_length:length of pad sequence	
+
+	Note:it is CBOW style model
+
+step-5
+	get word vector by passing it's position to call of embedded layer.
+	
+	print(embd_layer(np.array(1)))
+	print(embd_layer(np.array([1,3])))
+	print(embd_layer(pad_seq))
+
+
+	
+	

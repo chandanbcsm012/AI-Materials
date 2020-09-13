@@ -1,0 +1,36 @@
+sparse_categorical_crossentropy(y_true,logits):
+------------------------------------------------
+
+	here,
+	y_true---->1d tensor of actual output
+	logits---->2d tensor of probabilities
+
+	returns
+	1d tensor of loss where each element represents loss of individual sample
+	i.e. we may use mean of this tensor to get total loss
+
+categorical_crossentropy(y_true,logits):
+------------------------------------------------
+
+	here,
+	y_true---->2d tensor of actual output as one hot encoding
+	logits---->2d tensor of probabilities
+
+	returns
+	1d tensor of loss where each element represents loss of individual sample
+	i.e. we may use mean of this tensor to get total loss
+
+
+How to convert target(classification) in one hot encoding:
+----------------------------------------------------------
+
+	tf.one_hot(target,classes)
+
+
+
+
+
+
+
+
+

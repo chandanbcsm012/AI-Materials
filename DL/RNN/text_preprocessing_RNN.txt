@@ -1,0 +1,82 @@
+>In RNN,each token(word) is represented by a vector of real values
+>each sample is represented by 2d array(steps,features)
+>dim of each sample must be same
+
+exp:
+	corpus=['food is very good','food is tasty','awesome food']
+
+step1:
+	>create vocabulary
+	{awesome,food,good,is,tasty,very}
+
+step2:
+	>assign index for each word(0 is reserved for padding)
+	{awesome:1,food:2,good:3,is:4,tasty:5,very:6}
+step3:
+	for each document , generate a sequence
+	[[2,4,6,3],[2,4,5],[1,2]]
+	
+	Note:here vector lengths of both doc are different,so make them of same length
+
+step4:
+	>use padding to make all vectors of same length
+	[[2,4,6,3],[2,4,5,0],[1,2,0,0]]  
+	
+	>now we can say step size is 4
+
+step5:
+	>represent these sequences as one hot vector by considering features staring from 0 to max num in sequences
+
+features:	0	1	2	3	4	5	6
+ 
+doc1=	[
+	 2->[	0	0	1	0	0	0	0]
+	 4->[	0	0	0	0	1	0	0]
+	 6->[	0	0	0	0	0	0	1]
+	 3->[	0	0	0	1	0	0	0]
+	]				
+		
+doc3=	[
+	 2->[	0	0	1	0	0	0	0]
+	 4->[	0	0	0	0	1	0	0]
+	 5->[	0	0	0	0	0	1	0]
+	 0->[	1	0	0	0	0	0	0]
+	]
+
+doc3=	[
+	 1->[	0	1	0	0	0	0	0]
+	 2->[	0	0	1	0	0	0	0]
+	 0->[	1	0	0	0	0	0	0]
+	 0->[	1	0	0	0	0	0	0]
+	]				
+				
+
+Now final dataset dim:
+
+	(docs,steps,features)
+	(3,4,7)
+
+Code:
+
+	#learn the vocabulary
+
+	from keras.preprocessing.text import Tokenizer:
+	tk=Tokenizer()
+	tk.fit_on_texts(corpus)
+
+
+	#encode each doc to sequence
+
+	seqs=tk.texts_to_sequences(corpus)	
+
+	
+	#add padding to make equal length sequences
+
+	from keras.preprocessing.sequence import pad_sequences	
+	pad_seq=pad_sequences(seqs,padding="post")
+
+
+	#encode each sequence to one hot representation
+	from tensorflow.keras.utils import to_categorical
+	one_hot=to_categorical(pad_seq)
+

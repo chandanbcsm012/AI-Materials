@@ -1,0 +1,92 @@
+Document:
+	>a string that represents a sample in data set
+	>it is also known as sentence
+	
+	exp:
+	doc='quality is Good'
+
+Corpus:
+	>list/array of docs(sentences)
+
+	exp:
+	corpus=['food is # good! _@ 2019',
+		'& Food # is * tasty',
+		'quality is Good',
+		'service is Poor poor means very poor',
+		'it is too costly',
+		'cheap quality']
+
+Vocabulary:
+	>set of unique words in a corpus
+
+	exp:
+	{'i','like','food','loved' ,'cheap','quality',....}
+
+	Note:order of words depends on implementation
+	>ascendening 
+	>descending of freq
+	>etc.
+Token:
+	>each word of vocabulary is a token
+
+
+Example:
+	corpus=['food is very good','food is tasty','awesome food']
+
+step1:
+	>create vocabulary
+	{awesome,food,good,is,tasty,very}
+
+step2:
+	>assign index for each word(0 is reserved for padding)
+	{awesome:1,food:2,good:3,is:4,tasty:5,very:6}
+
+step3:
+	these unique words become features and now encode each doc using binary,count,tf-idf....
+
+Features:	awesome		food	good	is	tasty	very
+doc1-->		0		1	1	1	0	0
+doc2-->		0		1	0	1	1	0
+doc3-->		1		1	0	0	0	0
+
+Code:
+
+	from keras.preprocessing.text import Tokenizer
+	tk=Tokenizer()
+	tk.fit_on_texts(corpus)
+
+Once fit, the Tokenizer provides 4 attributes that you can use to query what has been learned about your documents:
+
+word_counts: A dictionary of words and their counts.
+word_docs: A dictionary of words and how many documents each appeared in.
+word_index: A dictionary of words and their uniquely assigned integers.
+document_count:An integer count of the total number of documents that were used to fit the Tokenizer.	
+
+print(tk.word_counts)
+print(tk.word_docs)
+print(tk.word_index)
+print(tk.document_count)
+
+The texts_to_matrix() function on the Tokenizer can be used to create one vector per document provided per input. The length of the vectors is the total size of the vocabulary.
+
+This function provides a suite of standard bag-of-words model text encoding schemes that can be provided via a mode argument to the function.
+
+The modes available include:
+
+‘binary‘: Whether or not each word is present in the document. This is the default.
+‘count‘: The count of each word in the document.
+‘tfidf‘: The Text Frequency-Inverse DocumentFrequency (TF-IDF) scoring for each word in the document.
+‘freq‘: The frequency of each word as a ratio of words within each document.
+
+X=tk.texts_to_matrix(corpus,mode='binary')
+
+Now this X,can be fed to ANN,CNN but not to RNN.
+
+Key points:
+	>we should not fit entire corpus to make vocab
+	>first divide corpus into train,test sets
+	>fit the train corpus to make vocab
+	>use oov_token(out of vocab) arg of Tokenizer to replace all unknown tokens during testing.
+
+
+	

@@ -1,0 +1,46 @@
+Convolutional Neural Network:
+-----------------------------
+It is another type of neural network which is best suitable for image classification.
+
+Problem with fully connected neural network:
+--------------------------------------------
+1.if image size is 100x100,i.e 10000 features in input layer and if a hidden layer contains 10 neurons i.e. each neuron will receive 10000 features +10000 weights
+i.e. we need 100000 weights now consider other hidden layers with neorons.In nutshell, network will update lacks of weights in each epoch which is quite time taking and not real in practical.
+
+(In CNN,weights are shared so less weights need to update in each epoch)
+
+2.we pass image as image format(either gray or colored) directly.
+(information of image is not lost)
+
+
+
+What is a Convolution?
+----------------------
+In mathematics, convolution is a mathematical operation on two functions that produces a third function expressing how the shape of one is modified by the other. The term convolution refers to both the result function and to the process of computing it.
+
+In image processing,first function is a part of an image and other function is kernal or filter & output of convolution is also known as Feature Map.
+
+There are so many standard filters that finds edges and other features from an image.
+
+
+Steps in CNN:
+-------------
+1.obtain convolutions from an image 
+2.add bias
+3.pass convolutions to ReLU 
+4.use pooling
+5.use fully connected layer
+
+in step-1,we may use padding to get importance of boundary pixels and it will also
+use to make same shape of the convolutional image as original image.
+
+in step-1,we may also use stride(step) ,which is default to 1,to decide how to take
+convolutional.
+
+if original image shape is (n x n),filter is (m x m) then convolutional image shape will be 
+	((n-m+2p)/stride)+1
+
+
+in pooling we may also use stride and padding
+
+

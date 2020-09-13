@@ -1,0 +1,7 @@
+model.add(Dense(100,input_dim=no_features))
+or
+model.add(Dense(100,input_shape=(no_features,)))
+or
+model.add(Dense(100,batch_input_shape=(None,no_features,)))
+or
+model.add(Flatten(input_shape=(width,height)))

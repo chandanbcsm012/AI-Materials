@@ -1,0 +1,38 @@
+Note: Enable Virtulation from BIOS
+
+Install latest virtual box
+Install latest vagrant 
+ 
+copy edx-platform at Home
+make dir VirtualBox VMs at Home
+copy virtual mechine in VirtualBox VMs
+open virtual mechine with VirtualBox
+
+List all available virtual machines
+
+VBoxManage list vms
+
+"deepak_tta_default_1487658746475_52025" {5a1d9b20-297a-4cea-9482-d55e605044e2}
+
+copy 5a1d9b20-297a-4cea-9482-d55e605044e2 and goto
+/home/manprax/tta_copy/.vagrant/machines/default/virtualbox
+edit---> action_provision
+and update copied key (5a1d9b20-297a-4cea-9482-d55e605044e2)
+update action_set_name key virtual mechine id
+update id to copied key (5a1d9b20-297a-4cea-9482-d55e605044e2)
+update synced_folders to syn folder
+update to vagrant_cwd to your project dir
+
+1. .vagrant.d --> file boxe folder copy and past 
+2. wget -c https://releases.hashicorp.com/vagrant/2.0.3/vagrant_2.0.3_x86_64.deb
+3. sudo dpkg -i vagrant_2.0.3_x86_64.deb
+4. vagrant plugin install vagrant-vbguest
+
+goto to edx-platform 
+vagrant up
+vagrant ssh
+
+
+
+
+

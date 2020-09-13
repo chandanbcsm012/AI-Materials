@@ -1,0 +1,48 @@
+Terminology used in Neural Network:
+-----------------------------------
+>Layers
+	>Input Layer
+	>Hidden Layers
+	>Output Layer
+>Neurons
+	>A Neuron=Linear model+Activation function
+>Activation Function
+	>transform linear model into specific intervals
+>loss function
+>Optimizers
+>feedfoward
+>back propagation
+>chain rule of partial derivative
+
+Single Layer neural network:
+----------------------------
+>Input Layer
+>Output Layer
+
+Note:Such NN is also known as perceptron
+
+Two or more Layers neural network:
+----------------------------
+>Input Layer
+>Hidden Layers
+>Output Layer
+
+Note:Such NN is also known as MLP(Multi layer perceptron)
+MLP is also known as Deep Neural Network
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

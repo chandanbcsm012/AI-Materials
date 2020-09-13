@@ -1,0 +1,4 @@
+Transfer learning make use of the knowledge gained while solving one problem and applying it to a different but related problem.
+For example, knowledge gained while learning to recognize cars could apply when trying to recognize trucks.
+
+here,we may use any pre-trained model for transfer learning.

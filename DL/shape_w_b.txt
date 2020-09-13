@@ -1,0 +1,12 @@
+shape of weight matrix at hidden layer:
+---------------------------------------
+[neurons,features]
+rows =no of  neurons
+column= no of features
+
+shape of bias matrix at hidden layer:
+---------------------------------------
+[1,neurons]
+
+ynet=wixi+b
+logit=sigmoid(ynet)

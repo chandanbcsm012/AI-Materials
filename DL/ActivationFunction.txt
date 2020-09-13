@@ -1,0 +1,59 @@
+In a neural network, the activation function is responsible for transforming the weighted sum into a specific interval or class.
+
+Commonly Used Activation Function:
+1.Sigmoid
+2.Tanh
+3.Relu
+4.Softmax
+
+
+Sigmoid:
+--------
+>The input to the function is transformed into a value between 0.0 and 1.0.
+
+>For a long time, through the early 1990s, it was the default activation used on neural networks.
+
+Tanh:(hyperbolic tangent)
+-------------------------
+
+>The input to the function is transformed into a value between
+-1.0 and 1.0.
+
+>In the later 1990s and through the 2000s, the tanh function was preferred over the sigmoid activation function.
+
+Note:the hyperbolic tangent activation function typically performs better than the logistic sigmoid.
+
+
+Problems with both:
+
+A general problem with both the sigmoid and tanh functions is that they saturate. This means that large values snap to 1.0 and small values snap to -1 or 0 for tanh and sigmoid respectively. 
+
+saturate:output value is bound in a range and not free
+
+
+Relu:
+-----
+>The input to the function is transformed into a value between
+0.0 and +ve values
+
+We can describe this using a simple if-statement:
+
+if (input > 0):
+	return input
+else:
+	return 0
+
+We can describe this function g() mathematically using the max() function over the set of 0.0 and the input z; for example:
+
+g(z) = max{0, z}
+
+
+Softmax:
+--------
+>it is extension of sigmoid and used if we have multi-class classification problem.
+
+>mostly it is used in output layer neuron
+
+>it gives you probability of each class that end up with sum 1.
+
+>output layer must have same no of neurons as no of classes.
